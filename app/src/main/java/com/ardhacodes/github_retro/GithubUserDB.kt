@@ -18,6 +18,7 @@ abstract class GithubUserDB: RoomDatabase() {
                     val dbName = "github_database"
                     INSTANCE = Room.databaseBuilder(context.applicationContext, GithubUserDB::class.java, dbName).build()
                 }
+            }else{
             }
             return INSTANCE
         }

@@ -50,6 +50,8 @@ class GithubUserProvider : ContentProvider() {
                 cursor = interfaceQuery.FindAllData()
                 if (context != null){
                     cursor.setNotificationUri(context?.contentResolver, uri)
+                }else{
+                    cursor = null
                 }
             }
             else -> {

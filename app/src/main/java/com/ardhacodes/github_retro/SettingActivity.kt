@@ -13,20 +13,21 @@ class SettingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySettingBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        TitleActionbar()
         val RemindedPreference = RemindedPreference(this)
         if (RemindedPreference.getReminder().ThisisRemainded){
-            binding.switch1.isChecked = true
+            binding.SwitchButton.isChecked = true
         }else{
-            binding.switch1.isChecked = false
+            binding.SwitchButton.isChecked = false
         }
 
         notifReceiver = NotificationReceiver()
-        binding.switch1.setOnCheckedChangeListener { buttonView, isChecked ->
+        binding.SwitchButton.setOnCheckedChangeListener { buttonView, isChecked ->
             if(isChecked){
                 saveReminder(true)
+                //variable to setting time
                 var type = "Github Notification Alarm"
-                var time = "01:10"
+                var time = "05:38"
                 var message = "Find Github Username"
                 notifReceiver.setMessageNotification(this, type, time, message)
             }else{
@@ -43,5 +44,11 @@ class SettingActivity : AppCompatActivity() {
 
         reminder.ThisisRemainded = state
         RemindedPreference.setReminder(reminder)
+    }
+
+    private fun TitleActionbar()
+    {
+        val actionBar = supportActionBar
+        actionBar?.title = "Setting Notification"
     }
 }

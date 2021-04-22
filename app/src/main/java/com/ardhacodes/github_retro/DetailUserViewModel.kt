@@ -58,14 +58,14 @@ class DetailUserViewModel(application: Application) : AndroidViewModel(applicati
                 avatar_url,
                 type
             )
-            userDaoFavInterfaceFavInterface?.addToFavorite(user)
+            userDaoFavInterfaceFavInterface?.InsertToFavorite(user)
         }
     }
 
-    suspend fun checkUser(id: Int) = userDaoFavInterfaceFavInterface?.checkUser(id)
+    suspend fun checkUser(id: Int) = userDaoFavInterfaceFavInterface?.getWhereUser(id)
     fun removeFromFavorite(id:Int){
         CoroutineScope(Dispatchers.IO).launch {
-            userDaoFavInterfaceFavInterface?.removeFromFavorite(id)
+            userDaoFavInterfaceFavInterface?.DeleteFromFavorite(id)
         }
     }
 }

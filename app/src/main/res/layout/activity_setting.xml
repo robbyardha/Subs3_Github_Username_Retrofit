@@ -7,13 +7,14 @@
     tools:context=".SettingActivity">
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/SwitchButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="655dp"
-        android:text="Set Reminder"
+        android:fontFamily="@font/poppins_light"
+        android:text="Nyalakan Notifikasi?"
         android:textOff="ON"
         android:textOn="OFF"
         app:layout_constraintBottom_toBottomOf="parent"

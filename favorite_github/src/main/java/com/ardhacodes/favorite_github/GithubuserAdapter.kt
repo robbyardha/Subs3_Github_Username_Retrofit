@@ -30,14 +30,16 @@ class GithubuserAdapter: RecyclerView.Adapter<GithubuserAdapter.UserViewHolder>(
                 onItemClickCallback?.onItemClicked(user)
             }
 
-            binding.apply {
-                Glide.with(itemView)
-                    .load(user.avatar_url)
-                    .into(avatar)
-                tvItemUsername.text = user.login
-                tvItemId.text = user.id.toString()
-                tvItemType.text = user.type
-            }
+            var bindItemUsername = binding.tvItemUsername
+            var bindItemId = binding.tvItemId
+            var bindItemType = binding.tvItemType
+
+            bindItemUsername.text = user.login
+            bindItemId.text = user.id.toString()
+            bindItemType.text = user.type
+            Glide.with(itemView)
+                .load(user.avatar_url)
+                .into(binding.avatar)
         }
 
     }
@@ -51,7 +53,9 @@ class GithubuserAdapter: RecyclerView.Adapter<GithubuserAdapter.UserViewHolder>(
         holder.bind(list[position])
     }
 
-    override fun getItemCount(): Int = list.size
+    override fun getItemCount(): Int {
+        return list.size
+    }
 
 
     interface OnItemClickCallback{

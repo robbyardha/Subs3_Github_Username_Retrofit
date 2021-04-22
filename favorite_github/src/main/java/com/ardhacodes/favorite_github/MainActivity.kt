@@ -16,53 +16,34 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        TitleActionbar()
+        configRvFav()
+    }
 
-//        configRvFav()
-//        adapter = GithubuserAdapter(arrList)
+    private fun configRvFav()
+    {
         adapter = GithubuserAdapter()
         adapter.notifyDataSetChanged()
 
         viewModel = ViewModelProvider(this).get(FavoriteVM::class.java)
 
-//        binding.apply {
-//            rvUserFav.setHasFixedSize(true)
-//            rvUserFav.layoutManager = LinearLayoutManager(this@MainActivity)
-//            rvUserFav.adapter = adapter
-//        }
+
         binding.rvUserFav.setHasFixedSize(true)
-        binding.rvUserFav.layoutManager = LinearLayoutManager(this)
+        binding.rvUserFav.layoutManager = LinearLayoutManager(this@MainActivity)
         binding.rvUserFav.adapter = adapter
 
+
         viewModel.setFavoriteUser(this)
         viewModel.getFavoriteUser()?.observe(this,{
             if (it!=null){
                 adapter.setList(it)
             }
         })
-
     }
 
-    private fun configRvFav()
+    private fun TitleActionbar()
     {
-//        adapter = GithubuserAdapter(arrList)
-        adapter.notifyDataSetChanged()
-
-        viewModel = ViewModelProvider(this).get(FavoriteVM::class.java)
-
-//        binding.apply {
-//            rvUserFav.setHasFixedSize(true)
-//            rvUserFav.layoutManager = LinearLayoutManager(this@MainActivity)
-//            rvUserFav.adapter = adapter
-//        }
-//        binding.rvUserFav.setHasFixedSize(true)
-//        binding.rvUserFav.layoutManager = LinearLayoutManager(this)
-//        binding.rvUserFav.adapter = adapter
-
-        viewModel.setFavoriteUser(this)
-        viewModel.getFavoriteUser()?.observe(this,{
-            if (it!=null){
-                adapter.setList(it)
-            }
-        })
+        val actionBar = supportActionBar
+        actionBar?.title = "Favorite Username Github"
     }
 }

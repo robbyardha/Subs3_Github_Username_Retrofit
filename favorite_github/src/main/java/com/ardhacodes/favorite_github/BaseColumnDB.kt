@@ -9,6 +9,7 @@ object BaseColumnDB {
 
     internal class FavoriteUserColumn: BaseColumns {
         companion object {
+
             const val TABLE_NAME = "table_favoriteuser"
             const val ID = "id"
             const val USERNAME = "login"

@@ -28,10 +28,10 @@ class NotificationReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
         // This method is called when the BroadcastReceiver is receiving an Intent broadcast.
-        sendNotification(context)
+        sendAsNotification(context)
     }
 
-    private fun sendNotification(context: Context) {
+    private fun sendAsNotification(context: Context) {
         var packageName = "com.ardhacodes.github_retro"
         var StringContexttext = "Waktunya untuk mencari Username Favorit anda di Github"
         val intent = context?.packageManager.getLaunchIntentForPackage(packageName)
@@ -39,7 +39,7 @@ class NotificationReceiver : BroadcastReceiver() {
 
         val notificationManager = context?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-        val builder = NotificationCompat.Builder(context, CHANNEL_ID)
+        val builderNotifComp = NotificationCompat.Builder(context, CHANNEL_ID)
             .setContentIntent(pendingIntent)
             .setSmallIcon(R.drawable.ic_baseline_notifications_24)
             .setContentTitle(context.resources.getString((R.string.notification_name)))
@@ -48,11 +48,11 @@ class NotificationReceiver : BroadcastReceiver() {
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             val channel = NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT)
-            builder.setChannelId(CHANNEL_ID)
+            builderNotifComp.setChannelId(CHANNEL_ID)
             notificationManager.createNotificationChannel(channel)
 
         }
-        val notification = builder.build()
+        val notification = builderNotifComp.build()
         notificationManager.notify(NOTIFICATION_ID, notification)
 
     }

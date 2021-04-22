@@ -5,16 +5,16 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 
 class FavoriteVM(application: Application): AndroidViewModel(application) {
-    private var userDao: FavoriteUserInterfaceQueries?
-    private var userDb: GithubUserDB?
+    private var favinterfacequeries: FavoriteUserInterfaceQueries?
+    private var githubUserDb: GithubUserDB?
 
-    //inisialisasi
+    //initialization
     init {
-        userDb = GithubUserDB.getDatabase(application)
-        userDao = userDb?.favoriteUserInterfaceQueries()
+        githubUserDb = GithubUserDB.getDatabase(application)
+        favinterfacequeries = githubUserDb?.favoriteUserInterfaceQueries()
     }
 
     fun getFavoriteUser(): LiveData<List<FavoriteUserEntity>>? {
-        return userDao?.getFavoriteUser()
+        return favinterfacequeries?.getAllFavoriteUser()
     }
 }

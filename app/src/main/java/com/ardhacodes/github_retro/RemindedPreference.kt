@@ -4,8 +4,8 @@ import android.content.Context
 
 class RemindedPreference(context: Context) {
     companion object{
-        const val PREFERENCE_NAME = "Reminder Preference"
-        private const val REMINDER = "isReminder"
+        const val PREFERENCE_NAME = "Notification Preference"
+        private const val REMINDER = "This Reminder"
 
     }
 
@@ -13,15 +13,15 @@ class RemindedPreference(context: Context) {
 
     fun setReminder(value: RemindedData)
     {
-        val editor = preference.edit()
-        editor.putBoolean(REMINDER, value.ThisisRemainded)
-        editor.apply()
+        val editable = preference.edit()
+        editable.putBoolean(REMINDER, value.ThisisRemainded)
+        editable.apply()
     }
 
     fun getReminder() : RemindedData
     {
-        val model = RemindedData()
-        model.ThisisRemainded = preference.getBoolean(REMINDER, false)
-        return model
+        val GetModelData = RemindedData()
+        GetModelData.ThisisRemainded = preference.getBoolean(REMINDER, false)
+        return GetModelData
     }
 }
