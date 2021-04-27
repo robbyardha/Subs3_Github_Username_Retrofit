@@ -27,7 +27,7 @@ class SettingActivity : AppCompatActivity() {
                 saveReminder(true)
                 //variable to setting time
                 var type = "Github Notification Alarm"
-                var time = "05:38"
+                var time = "09:00"
                 var message = "Find Github Username"
                 notifReceiver.setMessageNotification(this, type, time, message)
             }else{
